@@ -29,4 +29,5 @@
   		</dependency>
   	</dependencies>
   </dependencyManagement>
+  <name>Alloy DCS</name>
 </project>
