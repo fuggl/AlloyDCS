@@ -32,6 +32,7 @@
   <name>Alloy DCS</name>
   <modules>
   	<module>I18n</module>
+  	<module>Operation</module>
   </modules>
   <build>
   	<plugins>
