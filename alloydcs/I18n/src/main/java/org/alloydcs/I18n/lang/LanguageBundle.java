@@ -4,6 +4,7 @@ import java.util.Enumeration;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import javafx.beans.InvalidationListener;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectPropertyBase;
 
@@ -20,11 +21,17 @@ public final class LanguageBundle extends ResourceBundle {
 	}
 
 	private void update(final Locale newLocale) {
-		this.currentBundle.set(ResourceBundle.getBundle(this.baseName, newLocale));
+		this.currentBundle.set(this.getBundle(newLocale));
 	}
+	private ResourceBundle getBundle(final Locale locale) {
+		return ResourceBundle.getBundle(this.baseName, locale);
+	}
+
 	public void register(final Localizable localizable) {
-		this.currentBundleProperty().addListener(
-				obs -> localizable.updateText(this));
+		this.addListener(obs -> localizable.updateText(this));
+	}
+	private void addListener(final InvalidationListener listener) {
+		this.currentBundleProperty().addListener(listener);
 	}
 
 	@Override
