@@ -33,6 +33,7 @@
   <modules>
   	<module>I18n</module>
   	<module>Operation</module>
+  	<module>FX</module>
   </modules>
   <build>
   	<plugins>
